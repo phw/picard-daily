@@ -24,7 +24,7 @@ jobs:
           sudo apt-get install gettext
       - name: Build AppImage
         run: |
-          ./build.sh
+          ./build-appimage.sh
       - name: Archive artifacts
         uses: actions/upload-artifact@v3
         with:

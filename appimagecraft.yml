@@ -43,7 +43,7 @@ appimage:
     extra_args: |
       --icon-file "$PROJECT_ROOT"/source/resources/images/256x256/org.musicbrainz.Picard.png \
       --desktop-file "$PROJECT_ROOT"/source/org.musicbrainz.Picard.desktop \
-      --custom-apprun "$PROJECT_ROOT"/AppRun \
+      --custom-apprun "$PROJECT_ROOT"/appimage/AppRun \
       --executable "$BUILD_DIR"/chromaprint-fpcalc/fpcalc \
     environment:
       PIP_REQUIREMENTS: .

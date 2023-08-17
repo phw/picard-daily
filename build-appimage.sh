@@ -14,8 +14,10 @@ chmod +x appimagecraft.AppImage
 git clone --depth 500 --branch master "https://github.com/metabrainz/picard.git" "$SOURCE_DIR"
 pushd "$SOURCE_DIR"
 git fetch --depth=1 origin "+refs/tags/release-*:refs/tags/release-*"
+patch -p1 < appimage/appimage.patch
 popd
 
 mkdir -p "$BUILD_DIR"
 rm -rf "$BUILD_DIR"/*
-./appimagecraft.AppImage -d "$BUILD_DIR"
+./appimagecraft.AppImage --build-dir "$BUILD_DIR" \
+  --config-file appimagecraft.yml
