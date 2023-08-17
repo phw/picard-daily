@@ -1,0 +1,5 @@
+*~
+*.AppImage
+*.AppImage.zsync
+/build/
+/source/

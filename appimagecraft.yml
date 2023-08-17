@@ -1,0 +1,52 @@
+version: 1
+
+project:
+  name: org.musicbrainz.Picard
+  # version: 2.9.1
+  version_command: cd "$PROJECT_ROOT/source" && python -c "import picard; print(picard.__version__)"
+
+build:
+  null:
+
+scripts:
+  post_build:
+  - |  # Link AppStream metadata
+    mkdir -p "$BUILD_DIR"/AppDir/usr/share/metainfo/
+    cd "$BUILD_DIR"/AppDir/usr/share/metainfo/
+    ln -s ../../conda/share/metainfo/org.musicbrainz.Picard.appdata.xml .
+  - |  # Fetch fpcalc
+    FPCALC_VERSION=1.5.1
+    FPCALC_PACKAGE=chromaprint-fpcalc-${FPCALC_VERSION}-linux-x86_64
+    cd "$BUILD_DIR"
+    curl -Lo chromaprint-fpcalc.tar.gz "https://github.com/acoustid/chromaprint/releases/download/v${FPCALC_VERSION}/${FPCALC_PACKAGE}.tar.gz"
+    tar xzf chromaprint-fpcalc.tar.gz
+    mv ${FPCALC_PACKAGE}/ chromaprint-fpcalc
+  - |  # Build libdiscid
+    LIBDISCID_VERSION=0.6.4
+    LIBDISCID_PACKAGE=libdiscid-${LIBDISCID_VERSION}
+    cd "$BUILD_DIR"
+    curl -Lo libdiscid.tar.gz "https://github.com/metabrainz/libdiscid/releases/download/v${LIBDISCID_VERSION}/${LIBDISCID_PACKAGE}.tar.gz"
+    tar xzf libdiscid.tar.gz
+    mkdir ${LIBDISCID_PACKAGE}/build
+    cd ${LIBDISCID_PACKAGE}/build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/conda ..
+    make
+    make DESTDIR="$BUILD_DIR"/AppDir/ install
+  - |  # Clean AppDir
+    rm -rf "$BUILD_DIR"/AppDir/usr/conda/include
+
+appimage:
+  linuxdeploy:
+    plugins:
+      - conda
+    extra_args: |
+      --icon-file "$PROJECT_ROOT"/source/resources/images/256x256/org.musicbrainz.Picard.png \
+      --desktop-file "$PROJECT_ROOT"/source/org.musicbrainz.Picard.desktop \
+      --custom-apprun "$PROJECT_ROOT"/AppRun \
+      --executable "$BUILD_DIR"/chromaprint-fpcalc/fpcalc \
+    environment:
+      PIP_REQUIREMENTS: .
+    raw_environment:
+      - PIP_WORKDIR="$PROJECT_ROOT/source/"
+      - OUTPUT=MusicBrainz-Picard-"$VERSION"-"$ARCH".AppImage
+      - UPD_INFO="gh-releases-zsync|phw|picard-daily|continuous|MusicBrainz-Picard-*$ARCH.AppImage.zsync"

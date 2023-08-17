@@ -1,0 +1,15 @@
+diff --git a/scripts/picard.in b/scripts/picard.in
+index ab04f5546..fc53fdc7e 100644
+--- a/scripts/picard.in
++++ b/scripts/picard.in
+@@ -1,8 +1,9 @@
+ #!/usr/bin/env python3
+
+ try:
++    import os
+     from picard.tagger import main
+-    main('%(localedir)s', %(autoupdate)s)
++    main(os.path.join(os.environ.get('APPDIR', '/'), 'usr/conda/share/locale'), autoupdate=False)
+ except SystemExit:
+     raise  # Just continue with a normal application exit
+ except:  # noqa: E722,F722 # pylint: disable=bare-except
