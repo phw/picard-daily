@@ -7,8 +7,8 @@ SOURCE_DIR="$ROOT_DIR/source/"
 
 cd "$ROOT_DIR"
 
-wget -q "$APPIMAGECRAFT_URL"
-chmod +x appimagecraft-x86_64.AppImage
+curl -Lo appimagecraft.AppImage "https://github.com/TheAssassin/appimagecraft/releases/download/continuous/appimagecraft-x86_64.AppImage"
+chmod +x appimagecraft.AppImage
 
 [ ! -d "$SOURCE_DIR" ] || rm -rf "$SOURCE_DIR"
 git clone --depth 500 --branch master "https://github.com/metabrainz/picard.git" "$SOURCE_DIR"
@@ -18,4 +18,4 @@ popd
 
 mkdir -p "$BUILD_DIR"
 rm -rf "$BUILD_DIR"/*
-./appimagecraft-x86_64.AppImage -d "$BUILD_DIR"
+./appimagecraft.AppImage -d "$BUILD_DIR"
