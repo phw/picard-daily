@@ -31,14 +31,66 @@ jobs:
           name: AppImage
           path: MusicBrainz-Picard*.AppImage*
 
+  windows-portable:
+    name: Build Windows portable
+    runs-on: windows-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+      - name: Clone Picard
+        run: |
+          git clone --depth 500 --branch master "https://github.com/metabrainz/picard.git" source
+          cd source
+          git fetch --depth=1 origin "+refs/tags/release-*:refs/tags/release-*"
+      - name: Install dependencies
+        run: |
+          cd source
+          python -m pip install --upgrade pip
+          pip install -r requirements-build.txt
+          pip install -r requirements-win.txt
+      - name: Setup Windows build environment
+        run: |
+          cd source
+          & .\scripts\package\win-setup.ps1 `
+            -DiscidVersion $Env:DISCID_VERSION -DiscidSha256Sum $Env:DISCID_SHA256SUM `
+            -FpcalcVersion $Env:FPCALC_VERSION -FpcalcSha256Sum $Env:FPCALC_SHA256SUM
+          Write-Output "C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\x64" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8
+          $ReleaseTag = $(git describe --match "release-*" --abbrev=0 --always HEAD)
+          $BuildNumber = $(git rev-list --count "$ReleaseTag..HEAD")
+          Write-Output "BUILD_NUMBER=$BuildNumber" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
+          New-Item -Name .\artifacts -ItemType Directory
+        env:
+          DISCID_VERSION: 0.6.3
+          DISCID_SHA256SUM: c9486ece9796584a5ce5cf49efe88ada4454c24fa6f028c8bde1aaef28e99853
+          FPCALC_VERSION: 1.5.1
+          FPCALC_SHA256SUM: 36b478e16aa69f757f376645db0d436073a42c0097b6bb2677109e7835b59bbc
+      - name: Patch build version
+        run: |
+          cd source
+          python setup.py patch_version --platform=$Env:BUILD_NUMBER.$(git rev-parse --short HEAD)
+      - name: Build Windows portable app
+        run: |
+          cd source
+          & .\scripts\package\win-package-portable.ps1 -BuildNumber $Env:BUILD_NUMBER
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Windows
+          path: dist/*.exe
+
   upload:
     name: Create release and upload artifacts
     runs-on: ubuntu-latest
     needs:
       - appimage
+      - windows-portable
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v3
+        with:
+          path: artifacts/
       - name: Inspect directory after downloading artifacts
         run: ls -alFR
       - name: Create release and upload artifacts
@@ -48,4 +100,4 @@ jobs:
         run: |
             wget -q https://github.com/TheAssassin/pyuploadtool/releases/download/continuous/pyuploadtool-x86_64.AppImage
             chmod +x pyuploadtool-x86_64.AppImage
-            ./pyuploadtool-x86_64.AppImage **/MusicBrainz-Picard*.AppImage*
+            ./pyuploadtool-x86_64.AppImage artifacts/*
