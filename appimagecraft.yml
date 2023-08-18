@@ -3,8 +3,7 @@ version: 1
 project:
   name: org.musicbrainz.Picard
   # version: 2.9.1
-  # version_command: cd "$PROJECT_ROOT/source" && python -c "import picard; print(picard.__version__)"
-  version_command: ./version.sh
+  version_command: cd "$PROJECT_ROOT/source" && python -c "import picard; print(picard.__version__)"
 
 build:
   null:
