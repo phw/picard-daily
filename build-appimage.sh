@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 APPIMAGECRAFT_URL="https://github.com/TheAssassin/appimagecraft/releases/download/continuous/appimagecraft-x86_64.AppImage"
 ROOT_DIR=$(dirname "$0")

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 cd "$(dirname $0)/source"
 RELEASE_TAG=$(git describe --match "release-*" --abbrev=0 --always HEAD)
