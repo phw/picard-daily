@@ -65,7 +65,7 @@ jobs:
       - name: Patch build version
         shell: bash
         run: |
-          ./patch-version.sh
+          bash ./patch-version.sh
       - name: Build Windows portable app
         run: |
           cd source
