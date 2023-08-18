@@ -49,5 +49,5 @@ appimage:
       PIP_REQUIREMENTS: .
     raw_environment:
       - PIP_WORKDIR="$PROJECT_ROOT/source/"
-      - OUTPUT=MusicBrainz-Picard-"$VERSION"-"$ARCH".AppImage
+      - OUTPUT=MusicBrainz-Picard-daily-"$ARCH".AppImage
       - UPD_INFO="gh-releases-zsync|phw|picard-daily|continuous|MusicBrainz-Picard-*$ARCH.AppImage.zsync"
