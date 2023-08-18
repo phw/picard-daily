@@ -1,6 +1,7 @@
 #!/bin/sh
 
-export PATH="$APPDIR/usr/bin/:$PATH"
+export PATH="${APPDIR}/usr/bin/:${PATH}"
+export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${APPDIR}/usr/conda/lib:${LD_LIBRARY_PATH}"
 
 # Prevent Qt to load plugins from system directories
 unset QT_PLUGIN_PATH
