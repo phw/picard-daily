@@ -11,7 +11,7 @@ cd "$ROOT_DIR"
 git clone --depth 500 --branch master "https://github.com/metabrainz/picard.git" "$SOURCE_DIR"
 pushd "$SOURCE_DIR"
 git fetch --depth=1 origin "+refs/tags/release-*:refs/tags/release-*"
-patch -p1 < appimage/appimage.patch
+patch -p1 < ../appimage/appimage.patch
 popd
 
 ./patch-version.sh
