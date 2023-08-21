@@ -4,6 +4,12 @@ on:
   push:
     branches: ["*"]
     tags-ignore: [continuous]
+    paths:
+    - '.github/workflows/build.yml'
+    - 'appimage/*'
+    - 'appimagecraft.yml'
+    - 'build-appimage.sh'
+    - 'patch-version.sh'
   pull_request:
   workflow_dispatch:
   schedule:
