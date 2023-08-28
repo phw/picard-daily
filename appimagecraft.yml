@@ -45,7 +45,8 @@ appimage:
       --custom-apprun "$PROJECT_ROOT"/appimage/AppRun \
       --executable "$BUILD_DIR"/chromaprint-fpcalc/fpcalc \
       --library /usr/lib/x86_64-linux-gnu/libssl.so.1.1 \
-      --library /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1
+      --library /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1 \
+      --exclude-library=libstdc++.so*
     environment:
       PIP_REQUIREMENTS: .
     raw_environment:
