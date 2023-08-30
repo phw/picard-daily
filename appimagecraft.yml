@@ -32,8 +32,10 @@ scripts:
     cmake -DCMAKE_INSTALL_PREFIX=/usr/conda ..
     make
     make DESTDIR="$BUILD_DIR"/AppDir/ install
-  - |  # Clean AppDir
-    rm -rf "$BUILD_DIR"/AppDir/usr/conda/include
+  - |  # Prepare extra plugins
+    mkdir -v "$BUILD_DIR"/appimage-build
+    cp -v "$PROJECT_ROOT"/appimage/linuxdeploy-plugin-clean.sh "$BUILD_DIR"/appimage-build/
+    chmod +x "$BUILD_DIR"/appimage-build/linuxdeploy-plugin-clean.sh
 
 appimage:
   linuxdeploy:
@@ -46,7 +48,7 @@ appimage:
       --executable "$BUILD_DIR"/chromaprint-fpcalc/fpcalc \
       --library /usr/lib/x86_64-linux-gnu/libssl.so.1.1 \
       --library /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1 \
-      --exclude-library=libstdc++.so*
+      --plugin clean
     environment:
       PIP_REQUIREMENTS: .
     raw_environment:
