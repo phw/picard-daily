@@ -31,6 +31,11 @@ jobs:
       - name: Build AppImage
         run: |
           ./build-appimage.sh
+      - name: Lint AppImage
+        run: |
+          wget -q https://github.com/TheAssassin/appimagelint/releases/download/continuous/appimagelint-x86_64.AppImage
+          chmod +x appimagelint-x86_64.AppImage
+          ./appimagelint-x86_64.AppImage MusicBrainz-Picard*.AppImage
       - name: Archive artifacts
         uses: actions/upload-artifact@v3
         with:
