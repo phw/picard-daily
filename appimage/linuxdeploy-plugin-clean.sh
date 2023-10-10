@@ -38,3 +38,7 @@ set -x
 rm -vrf "$appdir"/usr/conda/include/
 rm -v "$appdir"/usr/conda/lib/*.a
 rm -v "$appdir"/usr/conda/lib/libstdc++.so*
+
+# Mitigate libwebp vulnerability allowing for arbitrary code execution (CVE-2023-4863).
+# Disable the Qt webp imageformat plugin.
+rm -v "$appdir"/usr/conda/lib/python3.11/site-packages/PyQt5/Qt5/plugins/imageformats/libqwebp.so
