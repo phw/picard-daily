@@ -48,7 +48,7 @@ jobs:
           python-version: 3.8
       - name: Clone Picard
         run: |
-          git clone --depth 500 --branch master "https://github.com/metabrainz/picard.git" source
+          git clone --depth 500 --branch 2.10.x "https://github.com/metabrainz/picard.git" source
           cd source
           git fetch --depth=1 origin "+refs/tags/release-*:refs/tags/release-*"
       - name: Install dependencies
