@@ -71,7 +71,7 @@ jobs:
           FPCALC_SHA256SUM: 36b478e16aa69f757f376645db0d436073a42c0097b6bb2677109e7835b59bbc
       - name: Install gettext
         run: |
-          & .\scripts\package\win-setup-gettext.ps1 `
+          & .\source\scripts\package\win-setup-gettext.ps1 `
             -GettextVersion $Env:GETTEXT_VERSION -GettextSha256Sum $Env:GETTEXT_SHA256SUM
           Add-Content $env:GITHUB_PATH (Join-Path -Path (Resolve-Path .) -ChildPath gettext\bin)
         env:
