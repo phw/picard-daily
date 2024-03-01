@@ -21,7 +21,7 @@ The latest builds are always available on the [release page](https://github.com/
 The following builds are provided:
 
 ### Linux AppImage
-[MusicBrainz-Picard-daily-x86_64.AppImage](https://github.com/phw/picard-daily/releases/download/continuous/MusicBrainz-Picard-daily-x86_64.AppImage)
+📦 [MusicBrainz-Picard-daily-x86_64.AppImage](https://github.com/phw/picard-daily/releases/download/continuous/MusicBrainz-Picard-daily-x86_64.AppImage)
 
 > [!TIP]
 > *See [Running AppImages](https://docs.appimage.org/user-guide/run-appimages.html).
@@ -29,4 +29,4 @@ The following builds are provided:
 > to integrate AppImage easily into the desktop environment.*
 
 ### Windows Portable
-[MusicBrainz-Picard-daily.exe](https://github.com/phw/picard-daily/releases/download/continuous/MusicBrainz-Picard-daily.exe)
+📦 [MusicBrainz-Picard-daily.exe](https://github.com/phw/picard-daily/releases/download/continuous/MusicBrainz-Picard-daily.exe)
