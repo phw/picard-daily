@@ -4,18 +4,18 @@ This repository provides daily inofficial binary builds for the latest
 development version of [MusicBrainz Picard](https://github.com/metabrainz/picard).
 
 > [!NOTE]
-> Currently these builds are for the [Picard 2.x](https://github.com/metabrainz/picard/tree/2.x)
+> *Currently these builds are for the [Picard 2.x](https://github.com/metabrainz/picard/tree/2.x)
 > branch only. The builds will be updated to Picard 3 (master branch) once the new plugin system
-> is in place. See also [issue #4](https://github.com/phw/picard-daily/issues/4).
+> is in place. See also [issue #4](https://github.com/phw/picard-daily/issues/4).*
 
 
 ## Packages
 
 > [!WARNING]
-> The binary packages provided here are built from Picard's latest development
+> *The binary packages provided here are built from Picard's latest development
 > code and might be unstable or contain bugs. The packages are provided as is
 > without any warranty.
-> **Use at your own risk and always make backups of your files.**
+> **Use at your own risk and always make backups of your files.***
 
 The latest builds are always available on the [release page](https://github.com/phw/picard-daily/releases/tag/continuous).
 The following builds are provided:
@@ -27,6 +27,10 @@ The following builds are provided:
 > *See [Running AppImages](https://docs.appimage.org/user-guide/run-appimages.html).
 > I recommend installing [AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher)
 > to integrate AppImage easily into the desktop environment.*
+> 
+> *You can store Picard's configuration next to the AppImage by creating a folder with the same name as the AppImage but with
+> `.config` appended. If you keep the default name create a folder `MusicBrainz-Picard-daily-x86_64.AppImage.config`. For more details
+> see [Using Portable Mode](https://docs.appimage.org/user-guide/portable-mode.html) in the AppImage user documentation.*
 
 ### Windows Portable
 📦 [MusicBrainz-Picard-daily.exe](https://github.com/phw/picard-daily/releases/download/continuous/MusicBrainz-Picard-daily.exe)
