@@ -3,6 +3,11 @@
 This repository provides daily inofficial binary builds for the latest
 development version of [MusicBrainz Picard](https://github.com/metabrainz/picard).
 
+> [!NOTE]
+> Currently these builds are for the [Picard 2.x](https://github.com/metabrainz/picard/tree/2.x)
+> branch only. The builds will be updated to Picard 3 (master branch) once the new plugin system
+> is in place. See also [issue #4](https://github.com/phw/picard-daily/issues/4).
+
 
 ## Packages
 
