@@ -30,3 +30,13 @@ The following builds are provided:
 
 ### Windows Portable
 📦 [MusicBrainz-Picard-daily.exe](https://github.com/phw/picard-daily/releases/download/continuous/MusicBrainz-Picard-daily.exe)
+
+
+## Feedback and issue reports
+For feedback, feature requests and issues regarding the daily builds please discuss on the
+[MetaBrainz community forums](https://community.metabrainz.org/t/picard-daily-builds/650945) before
+opening an [issue on GitHub](https://github.com/phw/picard-daily/issues).
+
+Any general feature requests and bug reports for Picard should be reported to the official [ticket system](https://tickets.metabrainz.org/projects/PICARD).
+If in doubt if an issue effects Picard in general or the daily builds specifically ask on the
+[MetaBrainz community forums](https://community.metabrainz.org/t/picard-daily-builds/650945) first.
