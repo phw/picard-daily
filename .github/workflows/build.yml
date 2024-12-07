@@ -86,8 +86,12 @@ jobs:
           cd source
           $ReleaseTag = $(git describe --match "release-*" --abbrev=0 --always HEAD)
           $BuildNumber = $(git rev-list --count "$ReleaseTag..HEAD")
-          & .\scripts\package\win-package-portable.ps1 -BuildNumber $BuildNumber
+          python setup.py build --build-number=$BuildNumber
+          python setup.py build_ext
+          pyinstaller --noconfirm --clean picard.spec
           mv dist\MusicBrainz-Picard-*.exe dist\MusicBrainz-Picard-daily.exe
+        env:
+          PICARD_BUILD_PORTABLE: 1
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
