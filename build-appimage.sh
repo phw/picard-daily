@@ -17,7 +17,7 @@ popd
 
 ./patch-version.sh
 
-curl -Lo appimagecraft.AppImage "https://github.com/TheAssassin/appimagecraft/releases/download/continuous/appimagecraft-x86_64.AppImage"
+curl -Lo appimagecraft.AppImage "$APPIMAGECRAFT_URL"
 chmod +x appimagecraft.AppImage
 
 mkdir -p "$BUILD_DIR"
