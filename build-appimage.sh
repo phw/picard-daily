@@ -3,7 +3,7 @@ set -e
 
 ARCH=$(uname --machine)
 
-APPIMAGECRAFT_URL="https://github.com/TheAssassin/appimagecraft/releases/download/continuous/appimagecraft-${ARCH}.AppImage"
+APPIMAGECRAFT_URL="https://github.com/phw/appimagecraft/releases/download/continuous/appimagecraft-${ARCH}.AppImage"
 ROOT_DIR=$(dirname "$0")
 BUILD_DIR="$ROOT_DIR/build/"
 SOURCE_DIR="$ROOT_DIR/source/"
