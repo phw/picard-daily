@@ -21,7 +21,10 @@ env:
 jobs:
   appimage:
     name: Build AppImage
-    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, ubuntu-22.04-arm]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - name: Install gettext

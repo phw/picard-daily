@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 
-APPIMAGECRAFT_URL="https://github.com/TheAssassin/appimagecraft/releases/download/continuous/appimagecraft-x86_64.AppImage"
+ARCH=$(uname --machine)
+
+APPIMAGECRAFT_URL="https://github.com/TheAssassin/appimagecraft/releases/download/continuous/appimagecraft-${ARCH}.AppImage"
 ROOT_DIR=$(dirname "$0")
 BUILD_DIR="$ROOT_DIR/build/"
 SOURCE_DIR="$ROOT_DIR/source/"
