@@ -46,8 +46,8 @@ appimage:
       --desktop-file "$PROJECT_ROOT"/source/org.musicbrainz.Picard.desktop \
       --custom-apprun "$PROJECT_ROOT"/appimage/AppRun \
       --executable "$BUILD_DIR"/chromaprint-fpcalc/fpcalc \
-      --library /usr/lib/x86_64-linux-gnu/libssl.so.1.1 \
-      --library /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1 \
+      --library /usr/lib/${ARCH}-linux-gnu/libssl.so.1.1 \
+      --library /usr/lib/${ARCH}-linux-gnu/libcrypto.so.1.1 \
       --plugin clean
     environment:
       PIP_REQUIREMENTS: .
