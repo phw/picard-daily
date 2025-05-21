@@ -22,7 +22,7 @@ scripts:
     tar xzf chromaprint-fpcalc.tar.gz
     mv ${FPCALC_PACKAGE}/ chromaprint-fpcalc
   - |  # Build libdiscid
-    LIBDISCID_VERSION=0.6.4
+    LIBDISCID_VERSION=0.6.5
     LIBDISCID_PACKAGE=libdiscid-${LIBDISCID_VERSION}
     cd "$BUILD_DIR"
     curl -Lo libdiscid.tar.gz "https://github.com/metabrainz/libdiscid/releases/download/v${LIBDISCID_VERSION}/${LIBDISCID_PACKAGE}.tar.gz"
