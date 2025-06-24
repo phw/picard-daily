@@ -50,7 +50,7 @@ appimage:
       --library /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1 \
       --plugin clean
     environment:
-      PIP_REQUIREMENTS: .
+      PIP_REQUIREMENTS: . zstandard
     raw_environment:
       - PIP_WORKDIR="$PROJECT_ROOT/source/"
       - OUTPUT=MusicBrainz-Picard-daily-"$ARCH".AppImage
