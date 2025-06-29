@@ -59,6 +59,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-build.txt
           pip install -r requirements-win.txt
+          pip install zstandard
       - name: Setup Windows build environment
         run: |
           cd source
