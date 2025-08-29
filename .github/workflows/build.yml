@@ -96,7 +96,7 @@ jobs:
         env:
           PICARD_BUILD_PORTABLE: 1
       - name: Code signing
-        uses: azure/trusted-signing-action@v0.5.1
+        uses: azure/trusted-signing-action@v0.5.9
         if: env.CODESIGN == 'true'
         with:
           azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
