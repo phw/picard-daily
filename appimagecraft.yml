@@ -15,7 +15,7 @@ scripts:
     cd "$BUILD_DIR"/AppDir/usr/share/metainfo/
     ln -s ../../conda/share/metainfo/org.musicbrainz.Picard.appdata.xml .
   - |  # Fetch fpcalc
-    FPCALC_VERSION=1.5.1
+    FPCALC_VERSION=1.6.0
     FPCALC_PACKAGE=chromaprint-fpcalc-${FPCALC_VERSION}-linux-x86_64
     cd "$BUILD_DIR"
     curl -Lo chromaprint-fpcalc.tar.gz "https://github.com/acoustid/chromaprint/releases/download/v${FPCALC_VERSION}/${FPCALC_PACKAGE}.tar.gz"
