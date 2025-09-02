@@ -23,7 +23,7 @@ jobs:
     name: Build AppImage
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install gettext
         run: |
           sudo apt-get update
@@ -43,7 +43,7 @@ jobs:
     env:
       CODESIGN: ${{ !!secrets.AZURE_CERT_PROFILE_NAME }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
