@@ -24,6 +24,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v6
+      - name: Clone Picard
+        run: |
+          git clone --depth 500 --branch master "https://github.com/metabrainz/picard.git" source
+          cd source
+          git fetch --depth=1 origin "+refs/tags/release-*:refs/tags/release-*"
       - name: Install uv
         uses: astral-sh/setup-uv@v7
       - name: Install gettext
