@@ -8,10 +8,12 @@ SOURCE_DIR="$ROOT_DIR/source/"
 
 cd "$ROOT_DIR"
 
-[ ! -d "$SOURCE_DIR" ] || rm -rf "$SOURCE_DIR"
-git clone --depth 500 --branch master "https://github.com/metabrainz/picard.git" "$SOURCE_DIR"
+if [ ! -d "$SOURCE_DIR" ]; then
+  echo "Picard source code must be checked out in $SOURCE_DIR"
+  exit 1
+fi
+
 pushd "$SOURCE_DIR"
-git fetch --depth=1 origin "+refs/tags/release-*:refs/tags/release-*"
 # patch -p1 < ../appimage/appimage.patch
 uv sync
 uv run ../patch-version.sh
