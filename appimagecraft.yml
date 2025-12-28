@@ -46,11 +46,11 @@ appimage:
       --desktop-file "$PROJECT_ROOT"/source/org.musicbrainz.Picard.desktop \
       --custom-apprun "$PROJECT_ROOT"/appimage/AppRun \
       --executable "$BUILD_DIR"/chromaprint-fpcalc/fpcalc \
-      --library /usr/lib/x86_64-linux-gnu/libssl.so.1.1 \
-      --library /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1 \
       --plugin clean
+    # --library /usr/lib/x86_64-linux-gnu/libssl.so.3 \
+    # --library /usr/lib/x86_64-linux-gnu/libcrypto.so.3 \
     environment:
-      PIP_REQUIREMENTS: . zstandard
+      PIP_REQUIREMENTS: .
     raw_environment:
       - PIP_WORKDIR="$PROJECT_ROOT/source/"
       - OUTPUT=MusicBrainz-Picard-daily-"$ARCH".AppImage

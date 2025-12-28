@@ -9,13 +9,16 @@ SOURCE_DIR="$ROOT_DIR/source/"
 cd "$ROOT_DIR"
 
 [ ! -d "$SOURCE_DIR" ] || rm -rf "$SOURCE_DIR"
-git clone --depth 500 --branch 2.x "https://github.com/metabrainz/picard.git" "$SOURCE_DIR"
+git clone --depth 500 --branch master "https://github.com/metabrainz/picard.git" "$SOURCE_DIR"
 pushd "$SOURCE_DIR"
 git fetch --depth=1 origin "+refs/tags/release-*:refs/tags/release-*"
-patch -p1 < ../appimage/appimage.patch
+# patch -p1 < ../appimage/appimage.patch
+uv sync
+uv run ../patch-version.sh
+uv run python setup.py build --disable-locales
+uv run python setup.py build_locales
+uv run python setup.py build_ext -i
 popd
-
-./patch-version.sh
 
 curl -Lo appimagecraft.AppImage "$APPIMAGECRAFT_URL"
 chmod +x appimagecraft.AppImage
