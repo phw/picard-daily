@@ -117,6 +117,7 @@ jobs:
   upload:
     name: Create release and upload artifacts
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     needs:
       - appimage
       - windows-portable
