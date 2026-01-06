@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: ["*"]
+    branches: ["picard-2"]
     tags-ignore: [continuous]
     paths:
     - '.github/workflows/build.yml'
@@ -12,8 +12,8 @@ on:
     - 'patch-version.sh'
   pull_request:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'  # every day at midnight
+  # schedule:
+  #   - cron: '0 0 * * *'  # every day at midnight
 
 env:
   APPIMAGE_EXTRACT_AND_RUN: 1
@@ -92,7 +92,7 @@ jobs:
           python setup.py build --build-number=$BuildNumber
           python setup.py build_ext
           pyinstaller --noconfirm --clean picard.spec
-          mv dist\MusicBrainz-Picard-*.exe dist\MusicBrainz-Picard-daily.exe
+          mv dist\MusicBrainz-Picard-*.exe dist\MusicBrainz-Picard-2-daily.exe
         env:
           PICARD_BUILD_PORTABLE: 1
       - name: Code signing
@@ -105,7 +105,7 @@ jobs:
           endpoint: ${{ secrets.AZURE_ENDPOINT }}
           trusted-signing-account-name: ${{ secrets.AZURE_CODE_SIGNING_NAME }}
           certificate-profile-name: ${{ secrets.AZURE_CERT_PROFILE_NAME }}
-          files: ${{ github.workspace }}\source\dist\MusicBrainz-Picard-daily.exe
+          files: ${{ github.workspace }}\source\dist\MusicBrainz-Picard-2-daily.exe
           timestamp-rfc3161: http://timestamp.acs.microsoft.com
           timestamp-digest: SHA256
       - name: Archive artifacts
@@ -117,7 +117,7 @@ jobs:
   upload:
     name: Create release and upload artifacts
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/picard-2'
     needs:
       - appimage
       - windows-portable
@@ -131,7 +131,8 @@ jobs:
       - name: Create release and upload artifacts
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          GITHUB_CONTINUOUS_RELEASE_NAME: MusicBrainz Picard daily builds
+          GITHUB_CONTINUOUS_RELEASE_NAME: MusicBrainz Picard 2 daily builds
+          GITHUB_CONTINUOUS_RELEASE_TAG: picard-2
         run: |
             wget -q https://github.com/TheAssassin/pyuploadtool/releases/download/continuous/pyuploadtool-x86_64.AppImage
             chmod +x pyuploadtool-x86_64.AppImage

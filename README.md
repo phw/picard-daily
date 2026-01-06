@@ -4,9 +4,8 @@ This repository provides daily inofficial binary builds for the latest
 development version of [MusicBrainz Picard](https://github.com/metabrainz/picard).
 
 > [!NOTE]
-> *Currently these builds are for the [Picard 2.x](https://github.com/metabrainz/picard/tree/2.x)
-> branch only. The builds will be updated to Picard 3 (master branch) once the new plugin system
-> is in place. See also [issue #4](https://github.com/phw/picard-daily/issues/4).*
+> *These builds are for the [Picard 2.x](https://github.com/metabrainz/picard/tree/2.x)
+> branch only. See the main branch of this repository for other builds.*
 
 
 ## Packages
@@ -17,11 +16,11 @@ development version of [MusicBrainz Picard](https://github.com/metabrainz/picard
 > without any warranty.
 > **Use at your own risk and always make backups of your files.***
 
-The latest builds are always available on the [release page](https://github.com/phw/picard-daily/releases/tag/continuous).
+The latest builds are always available on the [release page](https://github.com/phw/picard-daily/releases/tag/picard-2).
 The following builds are provided:
 
 ### Linux AppImage
-📦 [MusicBrainz-Picard-daily-x86_64.AppImage](https://github.com/phw/picard-daily/releases/download/continuous/MusicBrainz-Picard-daily-x86_64.AppImage)
+📦 [MusicBrainz-Picard-2-daily-x86_64.AppImage](https://github.com/phw/picard-daily/releases/download/picard-2/MusicBrainz-Picard-2-daily-x86_64.AppImage)
 
 > [!TIP]
 > *See [Running AppImages](https://docs.appimage.org/user-guide/run-appimages.html).
@@ -29,11 +28,11 @@ The following builds are provided:
 > to integrate AppImage easily into the desktop environment.*
 > 
 > *You can store Picard's configuration next to the AppImage by creating a folder with the same name as the AppImage but with
-> `.config` appended. If you keep the default name create a folder `MusicBrainz-Picard-daily-x86_64.AppImage.config`. For more details
+> `.config` appended. If you keep the default name create a folder `MusicBrainz-Picard-2-daily-x86_64.AppImage.config`. For more details
 > see [Using Portable Mode](https://docs.appimage.org/user-guide/portable-mode.html) in the AppImage user documentation.*
 
 ### Windows Portable
-📦 [MusicBrainz-Picard-daily.exe](https://github.com/phw/picard-daily/releases/download/continuous/MusicBrainz-Picard-daily.exe)
+📦 [MusicBrainz-Picard-2-daily.exe](https://github.com/phw/picard-daily/releases/download/picard-2/MusicBrainz-Picard-2-daily.exe)
 
 
 ## Feedback and issue reports
