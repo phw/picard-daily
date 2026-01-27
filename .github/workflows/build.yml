@@ -117,7 +117,7 @@ jobs:
   upload:
     name: Create release and upload artifacts
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: ${{ github.ref == 'refs/heads/main' || startsWith( github.ref, 'refs/tags' ) }}
     needs:
       - appimage
       - windows-portable
