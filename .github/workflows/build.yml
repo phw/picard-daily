@@ -30,10 +30,7 @@ jobs:
           repository: "metabrainz/picard"
           path: "source"
           fetch-depth: 1000
-      - name: Fetch tags
-        run: |
-          cd source
-          git fetch --depth=1 origin "+refs/tags/release-3*:refs/tags/release-3*"
+          fetch-tags: true
       - name: Install uv
         uses: astral-sh/setup-uv@v7
       - name: Install gettext
@@ -64,10 +61,7 @@ jobs:
           repository: "metabrainz/picard"
           path: "source"
           fetch-depth: 1000
-      - name: Fetch tags
-        run: |
-          cd source
-          git fetch --depth=1 origin "+refs/tags/release-3*:refs/tags/release-3*"
+          fetch-tags: true
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
