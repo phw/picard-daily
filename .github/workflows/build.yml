@@ -9,7 +9,6 @@ on:
     - 'appimage/*'
     - 'appimagecraft.yml'
     - 'build-appimage.sh'
-    - 'patch-version.sh'
   pull_request:
   workflow_dispatch:
   schedule:
@@ -96,7 +95,7 @@ jobs:
         shell: bash
         run: |
           cd source
-          uv run bash ../patch-version.sh
+          uv run bash ./scripts/tools/patch-version.sh
       - name: Build Windows portable app
         run: |
           cd source
