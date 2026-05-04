@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 1000
           fetch-tags: true
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@v8.1.0
       - name: Install gettext
         run: |
           sudo apt-get update
@@ -66,7 +66,7 @@ jobs:
         with:
           python-version: '3.14'
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@v8.1.0
       - name: Setup Windows build environment
         run: |
           cd source
@@ -109,7 +109,7 @@ jobs:
         env:
           PICARD_BUILD_PORTABLE: 1
       - name: Azure login
-        uses: azure/login@v3
+        uses: azure/login@v3.0.0
         if: env.CODESIGN == 'true'
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
