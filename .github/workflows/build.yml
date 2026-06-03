@@ -117,7 +117,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           enable-AzPSSession: true
       - name: Code signing
-        uses: azure/artifact-signing-action@v1.2.0
+        uses: azure/artifact-signing-action@v2.0.0
         if: env.CODESIGN == 'true'
         with:
           endpoint: ${{ secrets.AZURE_ENDPOINT }}
