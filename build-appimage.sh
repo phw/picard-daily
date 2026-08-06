@@ -15,7 +15,7 @@ fi
 
 pushd "$SOURCE_DIR"
 # patch -p1 < ../appimage/appimage.patch
-uv sync --extra cli ---extra plugins
+uv sync --extra cli,plugins
 uv run ./scripts/tools/patch-version.sh
 uv run python setup.py build --disable-locales
 uv run python setup.py build_locales
