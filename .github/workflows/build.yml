@@ -39,6 +39,8 @@ jobs:
       - name: Build AppImage
         run: |
           ./build-appimage.sh
+        env:
+          TMPDIR: /tmp
       - name: Archive artifacts
         uses: actions/upload-artifact@v7
         with:
