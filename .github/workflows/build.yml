@@ -14,13 +14,12 @@ on:
   schedule:
     - cron: '0 0 * * *'  # every day at midnight
 
-env:
-  APPIMAGE_EXTRACT_AND_RUN: 1
-
 jobs:
   appimage:
     name: Build AppImage
     runs-on: ubuntu-22.04
+    env:
+      APPIMAGE_EXTRACT_AND_RUN: 1
     steps:
       - uses: actions/checkout@v7
       - name: Clone Picard
