@@ -36,7 +36,7 @@ The following builds are provided:
 > see [Using Portable Mode](https://docs.appimage.org/user-guide/portable-mode.html) in the AppImage user documentation.*
 
 ### Debian
-📦 [picard-daily.deb](https://github.com/phw/picard-daily/releases/download/continuous/picard_daily_amd64.deb)
+📦 [picard_daily_amd64.deb](https://github.com/phw/picard-daily/releases/download/continuous/picard_daily_amd64.deb)
 
 Debian package build for Debian testing.
 
