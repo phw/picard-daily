@@ -35,6 +35,11 @@ The following builds are provided:
 > `.config` appended. If you keep the default name create a folder `MusicBrainz-Picard-daily-x86_64.AppImage.config`. For more details
 > see [Using Portable Mode](https://docs.appimage.org/user-guide/portable-mode.html) in the AppImage user documentation.*
 
+### Debian
+📦 [picard-daily.deb](https://github.com/phw/picard-daily/releases/download/continuous/picard_daily_amd64.deb)
+
+Debian package build for Debian testing.
+
 ### Windows Portable
 📦 [MusicBrainz-Picard-daily.exe](https://github.com/phw/picard-daily/releases/download/continuous/MusicBrainz-Picard-daily.exe)
 

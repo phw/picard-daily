@@ -193,4 +193,5 @@ jobs:
         run: |
             wget -q https://github.com/TheAssassin/pyuploadtool/releases/download/continuous/pyuploadtool-x86_64.AppImage
             chmod +x pyuploadtool-x86_64.AppImage
+            mv artifacts/debian/picard_*_amd64.deb artifacts/debian/picard_daily_amd64.deb
             ./pyuploadtool-x86_64.AppImage artifacts/**/*.{AppImage*,exe,deb}
