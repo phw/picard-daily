@@ -3,14 +3,6 @@
 This repository provides daily inofficial binary builds for the latest
 development version of [MusicBrainz Picard](https://github.com/metabrainz/picard).
 
-> [!NOTE]
-> *These builds are for the latest development version of MusicBrainz Picard 3. There is
-> not yet a stable release of Picard 3, and some changes are still work-in-progress.
-> Specifically Picard 3 features a completely new plugin system, and plugins written for
-> older versions are not compatible. Several existing plugins have been ported to the
-> new system, but many plugins won't be available. You will need to check whether plugins
-> you rely on are available.*
-
 
 ## Packages
 
