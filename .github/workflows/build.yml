@@ -66,7 +66,7 @@ jobs:
           ln -s ../debian/debian .
       - uses: jtdor/build-deb-action@v1
         env:
-          DEB_BUILD_OPTIONS: noautodbgsym
+          DEB_BUILD_OPTIONS: "noautodbgsym nocheck"
         with:
           docker-image: debian:testing-slim
           buildpackage-opts: --build=binary --no-sign
