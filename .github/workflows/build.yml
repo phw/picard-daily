@@ -49,32 +49,34 @@ jobs:
 
   deb:
     name: Build deb package
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - name: Clone Picard
         uses: actions/checkout@v7
         with:
-          repository: "metabrainz/picard"
-          path: "source"
+          repository: metabrainz/picard
+          path: source
           fetch-depth: 1000
           fetch-tags: true
       - name: Clone Debian packaging files
-        run: git clone https://git.launchpad.net/~musicbrainz-developers/picard/+git/picard-debian-packaging debian
-      - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install devscripts gettext
-      - name: Build deb
-        run: |
+          git clone https://git.launchpad.net/~musicbrainz-developers/picard/+git/picard-debian-packaging debian
           cd source
-          ln -s ../debian/debian
-          debuild -b -uc -us
+          ln -s ../debian/debian .
+      - uses: jtdor/build-deb-action@v1
+        env:
+          DEB_BUILD_OPTIONS: noautodbgsym
+        with:
+          docker-image: debian:testing-slim
+          buildpackage-opts: --build=binary --no-sign
+          source-dir: source
+          artifacts-dir: artifacts
       - name: Archive artifacts
         uses: actions/upload-artifact@v7
         with:
           name: deb
-          path: "*.deb"
+          path: artifacts/*
 
   windows-portable:
     name: Build Windows portable
