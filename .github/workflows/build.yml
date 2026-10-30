@@ -72,6 +72,13 @@ jobs:
           buildpackage-opts: --build=binary --no-sign
           source-dir: source
           artifacts-dir: artifacts
+          extra-build-deps: devscripts git python-is-python3
+          before-build-hook: |
+            set -e
+            cd source
+            ./scripts/tools/patch-version.sh
+            VERSION=$(python -c "import picard; print(picard.__version__)")
+            dch --newversion "$VERSION" --distribution unstable "Daily build for $VERSION"
       - name: Archive artifacts
         uses: actions/upload-artifact@v7
         with:
